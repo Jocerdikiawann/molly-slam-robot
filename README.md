@@ -13,6 +13,8 @@
 - Wago Connector 221 (5 Buah)
 - Screw Terminal (150 Buah)
 - Laptop Advan AI Gen Ultra (Untuk Computer Vision Raspberry ga bakal kuat, nabung beli jetson orin nano)
+- Baterai holder 2 Slot
+- Lion baterai 18650 (2 Buah)
 
 ### Controller PIN
 STBY -> 26
