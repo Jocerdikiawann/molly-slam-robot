@@ -15,6 +15,7 @@
 - Laptop Advan AI Gen Ultra (Untuk Computer Vision Raspberry ga bakal kuat, nabung beli jetson orin nano)
 - Baterai holder 2 Slot
 - Lion baterai 18650 (2 Buah)
+- IMU GY-85
 
 ### Controller PIN
 | Kabel | Pin GPIO | Description | Source | 
@@ -39,6 +40,13 @@
 | AI2 | 19 | Control | Motor Driver |
 | PWMA | 21 | Control | Motor Driver|
 
+#### IMU:
+| Imu Source | Esp32 Pin | Description | 
+| -------- | -------- | -------- |
+| VCC | 5V (Wago 221) | Power |
+| GND | GND (Wago 221) | Power | 
+| SCL | 17 | Jalur Data I2C |
+| SDA | 16 | Jalur Data I2C |
 
 ## Note
 | Kategori | PIN | Aturan Penggunaan |
