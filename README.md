@@ -11,6 +11,7 @@
 - Raspberry 4B
 - Raspberry Cam Module 3
 - Wago Connector 221 (5 Buah)
+- Screw Terminal (150 Buah)
 - Laptop Advan AI Gen Ultra (Untuk Computer Vision Raspberry ga bakal kuat, nabung beli jetson orin nano)
 
 ### Controller PIN
