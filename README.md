@@ -17,7 +17,9 @@
 - Lion baterai 18650 (2 Buah)
 
 ### Controller PIN
-STBY -> 26
+| Kabel | Pin GPIO | Description | Source | 
+| -------- | -------- | -------- | -------- |
+| STBY |  26 | Stand By (Untuk On/Off motor) | Motor Driver | 
 
 #### Motor Kiri:
 | Kabel | Pin GPIO | Description | Source | 
