@@ -3,9 +3,9 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_ADXL345_U.h>
 
-// --- Pin I2C Sensor GY-85 --- 
+// --- Pin I2C Sensor GY-85 ---
 #define I2C_SCL 17
-#define I2C_SDA 16 
+#define I2C_SDA 16
 #define ITG3205_ADDR 0x68
 
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
@@ -22,9 +22,9 @@ const int PIN_PWMB = 32;
 const int PIN_STBY = 26;
 
 // --- Pin Dual Encoder (JGA25-370) ---
-const int PIN_ENC_R_A = 23; 
+const int PIN_ENC_R_A = 23;
 const int PIN_ENC_R_B = 22;
-const int PIN_ENC_L_A = 27; 
+const int PIN_ENC_L_A = 27;
 const int PIN_ENC_L_B = 4;
 
 volatile long ticks_left = 0;
@@ -84,24 +84,26 @@ void drive(int left_speed, int right_speed) {
 
 void initITG3205() {
   Wire.beginTransmission(ITG3205_ADDR);
-  Wire.write(0x16); Wire.write(0x18); 
+  Wire.write(0x16);
+  Wire.write(0x18);
   Wire.endTransmission();
 
   Wire.beginTransmission(ITG3205_ADDR);
-  Wire.write(0x3E); Wire.write(0x01); 
+  Wire.write(0x3E);
+  Wire.write(0x01);
   Wire.endTransmission();
 }
 
 float readGyroZ() {
   Wire.beginTransmission(ITG3205_ADDR);
-  Wire.write(0x21); 
+  Wire.write(0x21);
   Wire.endTransmission(false);
   Wire.requestFrom(ITG3205_ADDR, 2, true);
 
-  if(Wire.available() >= 2) {
+  if (Wire.available() >= 2) {
     int16_t raw_z = (Wire.read() << 8) | Wire.read();
     float deg_per_sec = (float)raw_z / 14.375;
-    return (deg_per_sec * (PI / 180.0)) - gyro_z_offset; // Rad/s
+    return (deg_per_sec * (PI / 180.0)) - gyro_z_offset;  // Rad/s
   }
   return 0.0;
 }
@@ -109,14 +111,14 @@ float readGyroZ() {
 void calibrateGyroZ() {
   float sum = 0.0;
   int samples = 200;
-  for(int i = 0; i < samples; ++i) {
+  for (int i = 0; i < samples; ++i) {
     Wire.beginTransmission(ITG3205_ADDR);
     Wire.write(0x21);
     Wire.endTransmission(false);
     Wire.requestFrom(ITG3205_ADDR, 2, true);
-    if(Wire.available() >= 2) {
+    if (Wire.available() >= 2) {
       int16_t raw_z = (Wire.read() << 8) | Wire.read();
-      sum += ((float) raw_z / 14.375) * (PI / 180.0);
+      sum += ((float)raw_z / 14.375) * (PI / 180.0);
     }
     delay(10);
   }
@@ -127,32 +129,94 @@ void setup() {
   Serial.begin(115200);
   Wire.begin(I2C_SDA, I2C_SCL);
 
-  if(!accel.begin()) {
-    while(1) delay(10); // Halt jika accel gagal
+  if (!accel.begin()) {
+    while (1) delay(10);  // Halt jika accel gagal
   }
   accel.setRange(ADXL345_RANGE_4_G);
 
   initITG3205();
   calibrateGyroZ();
 
-  pinMode(PIN_AIN1, OUTPUT); pinMode(PIN_AIN2, OUTPUT); pinMode(PIN_PWMA, OUTPUT);
-  pinMode(PIN_BIN1, OUTPUT); pinMode(PIN_BIN2, OUTPUT); pinMode(PIN_PWMB, OUTPUT);
-  pinMode(PIN_STBY, OUTPUT); digitalWrite(PIN_STBY, HIGH); // Standby selalu ON
+  pinMode(PIN_AIN1, OUTPUT);
+  pinMode(PIN_AIN2, OUTPUT);
+  pinMode(PIN_PWMA, OUTPUT);
+  pinMode(PIN_BIN1, OUTPUT);
+  pinMode(PIN_BIN2, OUTPUT);
+  pinMode(PIN_PWMB, OUTPUT);
+  pinMode(PIN_STBY, OUTPUT);
+  digitalWrite(PIN_STBY, HIGH);  // Standby selalu ON
 
-  pinMode(PIN_ENC_L_A, INPUT_PULLUP); pinMode(PIN_ENC_L_B, INPUT_PULLUP);
-  pinMode(PIN_ENC_R_A, INPUT_PULLUP); pinMode(PIN_ENC_R_B, INPUT_PULLUP);
+  pinMode(PIN_ENC_L_A, INPUT_PULLUP);
+  pinMode(PIN_ENC_L_B, INPUT_PULLUP);
+  pinMode(PIN_ENC_R_A, INPUT_PULLUP);
+  pinMode(PIN_ENC_R_B, INPUT_PULLUP);
 
   attachInterrupt(digitalPinToInterrupt(PIN_ENC_L_A), isrEncoderLeft, RISING);
   attachInterrupt(digitalPinToInterrupt(PIN_ENC_R_A), isrEncoderRight, RISING);
 }
 
+//DEBUG
+// void loop() {
+//   // 1. Maju Bersama
+//   Serial.println("[Aksi] Maju");
+//   drive(180, 180);
+//   logTicks(20);
+
+//   // 2. Berhenti
+//   stopRobot();
+//   delay(5000);
+
+//   // 3. Belok di Tempat (Pivot Kanan: Kiri Maju, Kanan Mundur)
+//   Serial.println("[Aksi] Belok Kanan");
+//   drive(180, -180);
+//   logTicks(20);
+
+//   // 4. Berhenti
+//   stopRobot();
+//   delay(5000);
+
+//   // 3. Belok di Tempat (Pivot Kanan: Kiri Mundur, Kanan Maju)
+//   Serial.println("[Aksi] Belok Kiri");
+//   drive(-180, 180);
+//   logTicks(20);
+
+//   // 4. Berhenti
+//   stopRobot();
+//   delay(5000);
+
+
+//   // 5. Mundur Bersama
+//   Serial.println("[Aksi] Mundur");
+//   drive(-180, -180);
+//   logTicks(20);
+
+//   // 6. Berhenti
+//   stopRobot();
+//   delay(5000);
+// }
+
+// void stopRobot() {
+//   drive(0, 0);
+// }
+
+// void logTicks(int iterations) {
+//   for (int i = 0; i < iterations; i++) {
+//     Serial.print("L_Ticks: ");
+//     Serial.print(ticks_left);
+//     Serial.print("\t| R_Ticks: ");
+//     Serial.println(ticks_right);
+//     delay(100);
+//   }
+// }
+
+//PROD
 void loop() {
   // ==========================================
   // 1. TERIMA PERINTAH MOTOR DARI RASPBERRY PI
   // ==========================================
   if (Serial.available()) {
     String data = Serial.readStringUntil('\n');
-    
+
     // Format yang diharapkan: CMD,PWM_KIRI,PWM_KANAN
     // Contoh untuk belok: CMD,150,-150
     if (data.startsWith("CMD,")) {

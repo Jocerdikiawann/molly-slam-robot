@@ -48,6 +48,14 @@
 | SCL | 17 | Jalur Data I2C |
 | SDA | 16 | Jalur Data I2C |
 
+### Driver
+| TB6612FNG | Motor | Description |
+| -------- | -------- | -------- |
+| AO1 | putih |  motor kanan |
+| AO2 | merah | motor kanan |
+| BO1 | merah |  motor kiri (mirrored) |
+| BO2 | putih | motor kiri (mirrored) |
+
 ## Note
 | Kategori | PIN | Aturan Penggunaan |
 | -------- | -------- | -------- |
