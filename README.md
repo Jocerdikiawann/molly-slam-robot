@@ -1,4 +1,8 @@
-## Molly SLAM 3D (Documentation Only)
+## Molly SLAM 3D
+
+A personal repository dedicated to my learning journey in robotics using **ROS2 Jazzy**. 
+
+After years of diving deep into software engineering down to the low-level programming stage, I wanted to taste something new just for fun. Built upon my existing programming fundamentals, this project is my sandbox to explore and understand the intricate mutual bridge between electronic hardware and software logic.
 
 ### Software :
 - ROS 2 Jazzy
