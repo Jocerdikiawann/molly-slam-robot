@@ -1,5 +1,9 @@
 ## Molly SLAM 3D (Documentation Only)
 
+### Software :
+- ROS 2 Jazzy
+- Ubuntu 24.0
+
 ### Component :
 - RPLIDAR A1M8
 - Breadboard (5 unit)
