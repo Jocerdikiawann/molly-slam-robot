@@ -30,7 +30,7 @@
 | Kabel | Pin GPIO | Description | Source | 
 | -------- | -------- | -------- | -------- |
 | Kuning | 27 | Interupt | DC Motor |
-| Hijau | 4 | - | DC Motor|
+| Hijau | 14 | - | DC Motor|
 | PWMB | 32 | Control | Motor Driver |
 | BI2 | 33 | Control | Motor Driver |
 | BI1 | 25 | Control | Motor Driver|

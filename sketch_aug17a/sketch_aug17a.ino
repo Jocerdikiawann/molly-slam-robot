@@ -24,8 +24,9 @@ const int PIN_STBY = 26;
 // --- Pin Dual Encoder (JGA25-370) ---
 const int PIN_ENC_R_A = 23;
 const int PIN_ENC_R_B = 22;
+
 const int PIN_ENC_L_A = 27;
-const int PIN_ENC_L_B = 4;
+const int PIN_ENC_L_B = 14;
 
 volatile long ticks_left = 0;
 volatile long ticks_right = 0;
