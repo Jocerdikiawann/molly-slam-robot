@@ -7,6 +7,7 @@ After years of diving deep into software engineering down to the low-level progr
 ### Software :
 - ROS 2 Jazzy
 - Ubuntu 24.0
+- Gazebo (for Simulation)
 
 ### Component :
 - RPLIDAR A1M8
