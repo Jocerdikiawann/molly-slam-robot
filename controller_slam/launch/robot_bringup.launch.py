@@ -6,7 +6,7 @@ def generate_launch_description():
     return LaunchDescription([
         # ESP32 Bridge Node
         Node(
-            package='robot_bringup',
+            package='controller_slam',
             executable='esp32_bridge_node',
             name='esp32_bridge',
             output='screen',
@@ -19,7 +19,7 @@ def generate_launch_description():
         # RPLIDAR A1M8 Driver (install via: sudo apt install ros-<distro>-rplidar-ros)
         Node(
             package='rplidar_ros',
-            executable='rplidar_node',
+            executable='rplidar_composition',
             name='rplidar_node',
             output='screen',
             parameters=[{
