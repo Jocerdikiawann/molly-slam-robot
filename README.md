@@ -35,7 +35,7 @@ After years of diving deep into software engineering down to the low-level progr
 | Kabel | Pin GPIO | Description | Source | 
 | -------- | -------- | -------- | -------- |
 | Kuning | 27 | Interupt | DC Motor |
-| Hijau | 14 | - | DC Motor|
+| Hijau | 17 | - | DC Motor|
 | PWMB | 32 | Control | Motor Driver |
 | BI2 | 33 | Control | Motor Driver |
 | BI1 | 25 | Control | Motor Driver|
@@ -44,18 +44,18 @@ After years of diving deep into software engineering down to the low-level progr
 | Kabel | Pin GPIO | Description | Source | 
 | -------- | -------- | -------- | -------- |
 | Kuning | 23 | Interupt | DC Motor |
-| Hijau | 22 | Phase 2 | DC Motor|
+| Hijau | 16 | Phase 2 | DC Motor|
 | AI1 | 18 | Control | Motor Driver |
 | AI2 | 19 | Control | Motor Driver |
-| PWMA | 21 | Control | Motor Driver|
+| PWMA | 4 | Control | Motor Driver|
 
 #### IMU:
 | Imu Source | Esp32 Pin | Description | 
 | -------- | -------- | -------- |
 | VCC | 5V (Wago 221) | Power |
 | GND | GND (Wago 221) | Power | 
-| SCL | 17 | Jalur Data I2C |
-| SDA | 16 | Jalur Data I2C |
+| SCL | 22 | Jalur Data I2C |
+| SDA | 21 | Jalur Data I2C |
 
 ### Driver
 | TB6612FNG | Motor | Description |
