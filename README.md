@@ -35,7 +35,7 @@ After years of diving deep into software engineering down to the low-level progr
 | Kabel | Pin GPIO | Description | Source | 
 | -------- | -------- | -------- | -------- |
 | Kuning | 27 | Interupt | DC Motor |
-| Hijau | 17 | - | DC Motor|
+| Putih | 17 | - | DC Motor|
 | PWMB | 32 | Control | Motor Driver |
 | BI2 | 33 | Control | Motor Driver |
 | BI1 | 25 | Control | Motor Driver|
@@ -44,7 +44,7 @@ After years of diving deep into software engineering down to the low-level progr
 | Kabel | Pin GPIO | Description | Source | 
 | -------- | -------- | -------- | -------- |
 | Kuning | 23 | Interupt | DC Motor |
-| Hijau | 16 | Phase 2 | DC Motor|
+| Putih | 16 | Phase 2 | DC Motor|
 | AI1 | 18 | Control | Motor Driver |
 | AI2 | 19 | Control | Motor Driver |
 | PWMA | 4 | Control | Motor Driver|
@@ -60,10 +60,31 @@ After years of diving deep into software engineering down to the low-level progr
 ### Driver
 | TB6612FNG | Motor | Description |
 | -------- | -------- | -------- |
-| AO1 | putih |  motor kanan |
+| AO1 | hitam |  motor kanan |
 | AO2 | merah | motor kanan |
 | BO1 | merah |  motor kiri (mirrored) |
-| BO2 | putih | motor kiri (mirrored) |
+| BO2 | hitam | motor kiri (mirrored) |
+
+### Updated Table mapping using (YFrobot JGA25-370)
+#### Kiri
+| Kabel YFrobot | Sambungan |
+|---|---|
+| Merah | Terminal motor pada output `BO1` |
+| Hitam | Terminal motor lainnya pada output `BO2` |
+| Hijau | GND encoder |
+| Biru | VCC encoder, sesuai tegangan yang didukung modul |
+| Kuning | GPIO 27 — encoder A |
+| Putih | GPIO 17 — encoder B |
+
+#### kanan
+| Kabel YFrobot | Sambungan |
+|---|---|
+| Merah | Terminal motor pada output `AO1` atau `AO2` |
+| Hitam | Terminal motor lainnya pada output `AO1` atau `AO2` |
+| Hijau | GND encoder |
+| Biru | VCC encoder, sesuai tegangan yang didukung modul |
+| Kuning | GPIO 23 — encoder A |
+| Putih | GPIO 16 — encoder B |
 
 ## Note
 | Kategori | PIN | Aturan Penggunaan |
